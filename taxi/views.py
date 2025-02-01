@@ -74,7 +74,6 @@ class CarListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
@@ -106,7 +105,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
         if query:
             queryset = queryset.filter(username__icontains=query)
         return queryset
-
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

@@ -9,7 +9,8 @@ User = get_user_model()
 
 def get_search_results(html):
 
-    match = re.search(r'<div id="driver-search-results">(.*?)</div>', html, re.DOTALL)
+    match = re.search(r'<div id="driver-search-results">(.*?)</div>',
+                      html, re.DOTALL)
     return match.group(1) if match else html
 
 
@@ -22,13 +23,19 @@ class SearchTests(TestCase):
         )
         self.client.force_login(self.user)
 
-        self.manufacturer1 = Manufacturer.objects.create(name="Toyota", country="Japan")
-        self.manufacturer2 = Manufacturer.objects.create(name="Ford", country="USA")
-        self.manufacturer3 = Manufacturer.objects.create(name="BMW", country="Germany")
+        self.manufacturer1 = Manufacturer.objects.create(name="Toyota",
+                                                         country="Japan")
+        self.manufacturer2 = Manufacturer.objects.create(name="Ford",
+                                                         country="USA")
+        self.manufacturer3 = Manufacturer.objects.create(name="BMW",
+                                                         country="Germany")
 
-        self.car1 = Car.objects.create(model="Camry", manufacturer=self.manufacturer1)
-        self.car2 = Car.objects.create(model="Corolla", manufacturer=self.manufacturer1)
-        self.car3 = Car.objects.create(model="Mustang", manufacturer=self.manufacturer2)
+        self.car1 = Car.objects.create(model="Camry",
+                                       manufacturer=self.manufacturer1)
+        self.car2 = Car.objects.create(model="Corolla",
+                                       manufacturer=self.manufacturer1)
+        self.car3 = Car.objects.create(model="Mustang",
+                                       manufacturer=self.manufacturer2)
 
         self.driver2 = User.objects.create_user(
             username="johndoe",
